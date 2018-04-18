@@ -1,5 +1,5 @@
 # TorchCV: a PyTorch vision library mimics ChainerCV
-
+updated by wyn mew
 
 ## Detection
 | Model                | Original Paper | ChainerCV  | TorchCV*  |
