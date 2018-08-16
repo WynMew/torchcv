@@ -1,0 +1,3 @@
+cat HaiRong20180813PlusBOX8000GtList | awk 'BEGIN{srand();}{print rand()"\t"$0}' | sort -k1 -n | cut -f2- > HaiRong20180813PlusBOX8000GtList.shuffled
+split -l 19500  HaiRong20180813PlusBOX8000GtList.shuffled
+
