@@ -9,7 +9,7 @@ from PIL import Image
 
 MyClassNum = 5
 net = FPNSSD512(num_classes=MyClassNum + 1)
-net.load_state_dict(torch.load('ssdckpt_5Classes_BOX.pth')['net'])
+net.load_state_dict(torch.load('..._.pth')['net'])
 net.cuda()
 net.eval()
 
