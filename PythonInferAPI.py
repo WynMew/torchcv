@@ -23,7 +23,7 @@ def transform(img):
     ])(img)
     return img
 
-Img = '/home/wynmew/workspace/Data/Hairong/images/2guw/bottom_left/goods_2guw_pos_bottom_left_time_1532596559863.jpg' # 1098 375 1251 510 0
+Img = '...'
 
 box_coder = SSDBoxCoder(net)
 
