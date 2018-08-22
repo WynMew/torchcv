@@ -28,46 +28,15 @@ preprocess = transforms.Compose([
 ])
 
 
-def protobuf_encode(samples):
-    request = goods_pb2.GoodsReq()
-    request.request_id = 'default'
-    for data, offset_low, offset_high, camera_pos in samples:
-        image = request.images.add()
-        ### 传进来的是numpy格式的图像, 这里编码成png格式
-        ### 这里采用png格式是为了后面的验证用的, 实际上编码格式是jpg
-        image.data = (cv2.imencode('.png', data)[1]).tostring()
-        image.offset_low = offset_low
-        image.offset_high = offset_high
-        image.camera_pos = camera_pos
-    return request.SerializeToString()
-
-
 def protobuf_decode(request_string):
     request = goods_pb2.GoodsReq()
-    #print(type(request_string)) #<class 'goods_pb2.GoodsReq'>
-    #request.ParseFromString(request_string)
     request = request_string
     samples = []
     for req_image in request.images:
-        ### protobuf中保存的是jpg格式的图像, 这里解码成numpy数组
         image = np.fromstring(req_image.data, np.uint8)
         image = cv2.imdecode(image, cv2.IMREAD_COLOR)
-        offset_low = req_image.offset_low
-        offset_high = req_image.offset_high
-        camera_pos = req_image.camera_pos
-        samples.append((image, offset_low, offset_high, camera_pos))
+        samples.append((image))
     return samples, request.request_id
-
-
-def check_sample(s1, s2):
-    ### check image
-    assert (s1[0] == s2[0]).all()
-    ### check offset_low
-    assert s1[1] == s2[1]
-    ### check offset_high
-    assert s1[2] == s2[2]
-    ### check camera_pos
-    assert s1[3] == s2[3]
 
 
 class infer:
