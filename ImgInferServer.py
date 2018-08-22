@@ -40,7 +40,7 @@ def protobuf_decode(request_string):
 
 
 class infer:
-    def __init__(self, weightfile = 'ssdckpt_5Classes_BOX.pth'):
+    def __init__(self, weightfile = 'ssdckpt_*.pth'):
         self.net = FPNSSD512(num_classes=MyClassNum + 1)
         self.net.load_state_dict(torch.load(weightfile)['net'])
         self.net.cuda()
