@@ -1,5 +1,10 @@
 # TorchCV: a PyTorch vision library mimics ChainerCV
-updated by wyn mew
+updated by wyn mew 
+
+* gRPC image infer server
+* model evel 
+* result parser
+* datalist creator
 
 ## Detection
 | Model                | Original Paper | ChainerCV  | TorchCV*  |
