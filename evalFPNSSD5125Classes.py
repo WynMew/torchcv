@@ -16,15 +16,7 @@ from PIL import Image
 MyClassNum = 5
 # net = SSD300(num_classes=MyClassNum+1)
 net = FPNSSD512(num_classes=MyClassNum + 1)
-#net.load_state_dict(torch.load('ssdckpt_5Classes.pth')['net'])
-#net.load_state_dict(torch.load('ssdckpt_5ClassesSel.pth')['net'])
-#net.load_state_dict(torch.load('ssdckpt_5ClassesSel_BOX.pth')['net'])
-#net.load_state_dict(torch.load('ssdckpt_5Classes_Aug_BOX.pth')['net'])
-#net.load_state_dict(torch.load('ssdckpt_5Classes_Aug2_BOX.pth')['net'])
-#net.load_state_dict(torch.load('ssdckpt_5Classes_Aug3_BOX.pth')['net'])
-#net.load_state_dict(torch.load('ssdckpt_5Classes_Aug4_BOX.pth')['net'])
-#net.load_state_dict(torch.load('ssdckpt_5Classes_Aug5_BOX.pth')['net'])
-net.load_state_dict(torch.load('ssdckpt_5Classes_Aug6_BOX.pth')['net'])
+net.load_state_dict(torch.load('weight.pth')['net'])
 
 net.cuda()
 net.eval()
@@ -41,13 +33,9 @@ def transform(img, boxes, labels):
     ])(img)
     return img, boxes, labels
 
-'''
+
 dataset = ListDataset(root='/home/wynmew/workspace/Data', \
-                      list_file='HaiRong20180813PlusBOX8000GtListshuffledVal',
-                      transform=transform)
-'''
-dataset = ListDataset(root='/home/wynmew/workspace/Data', \
-                      list_file='HaiRongTestGT',
+                      list_file='TestGT',
                       transform=transform)
 
 dataloader = torch.utils.data.DataLoader(dataset, batch_size=1, shuffle=False, num_workers=1)
@@ -87,24 +75,3 @@ def eval(net, dataset):
 
 
 eval(net, dataset)
-
-'''
-for i, (inputs, box_targets, label_targets) in enumerate(dataloader):
-    print('%d/%d' % (i, len(dataloader)))
-    gt_boxes.append(box_targets.squeeze(0))
-    gt_labels.append(label_targets.squeeze(0))
-    loc_preds, cls_preds = net(Variable(inputs.cuda(), volatile=True))
-    box_preds, label_preds, score_preds = box_coder.decode(
-        loc_preds.cpu().data.squeeze(),
-        F.softmax(cls_preds.squeeze(), dim=1).cpu().data,
-        score_thresh=0.01)
-    pred_boxes.append(box_preds)
-    pred_labels.append(label_preds)
-    pred_scores.append(score_preds)
-    break
-
-print(voc_eval(
-    pred_boxes, pred_labels, pred_scores,
-    gt_boxes, gt_labels, gt_difficults=None,
-    iou_thresh=0.5, use_07_metric=True))
-'''
