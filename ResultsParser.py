@@ -31,67 +31,8 @@ def get_iou(a, b, epsilon=1e-5):
 ids = list()
 counter = 0
 label = []
-'''
-for line in open(osp.join('/home/wynmew/workspace/PyTorchCVVD', 'Results_evalFPNSSD512HaiRng20180813PlusBOX8000_HaiRongTest')):
-    ids.append((line.strip()))
-'''
-'''
-for line in open(osp.join('/home/wynmew/workspace/PyTorchCVVD', 'Results_evalFPNSSD5125Classes_HaiRongTest')):
-    ids.append((line.strip()))
-'''
-'''
-for line in open(osp.join('/home/wynmew/workspace/PyTorchCVVD', 'Results_evalFPNSSD5125ClassesTopRight_HaiRongTest')):
-    ids.append((line.strip()))
-'''
-'''
-for line in open(osp.join('/home/wynmew/workspace/PyTorchCVVD', 'Results_evalFPNSSD5125Classes_BOX_HaiRongTest')):
-    ids.append((line.strip()))
-'''
-'''
-for line in open(osp.join('/home/wynmew/workspace/PyTorchCVVD', 'Results_evalFPNSSD5125Classes_BOX8000_HaiRongTest')):
-    ids.append((line.strip()))
-'''
-'''
-for line in open(osp.join('/home/wynmew/workspace/PyTorchCVVD', 'Results_evalFPNSSD5125Classes_BOX3000_HaiRongTest')):
-    ids.append((line.strip()))
-'''
-'''
-for line in open(osp.join('/home/wynmew/workspace/PyTorchCVVD', 'Results_evalFPNSSD5125ClassesSel_HaiRongTest')):
-    ids.append((line.strip()))
-'''
-'''
-for line in open(osp.join('/home/wynmew/workspace/PyTorchCVVD', 'Results_evalFPNSSD5125ClassesSel_BOX_HaiRongTest')):
-    ids.append((line.strip()))
-'''
-'''
-for line in open(osp.join('/home/wynmew/workspace/PyTorchCVVD', 'Results_evalFPNSSD5125Classes_Aug_BOX_HaiRongTest')):
-    ids.append((line.strip()))
-'''
-'''
-for line in open(osp.join('/home/wynmew/workspace/PyTorchCVVD', 'Results_evalFPNSSD5125Classes_Aug2_BOX_HaiRongTest')):
-    ids.append((line.strip()))
-'''
-'''
-for line in open(osp.join('/home/wynmew/workspace/PyTorchCVVD', 'Results_evalFPNSSD5125Classes_Aug3_BOX_HaiRongTest')):
-    ids.append((line.strip()))
-'''
-'''
-for line in open(osp.join('/home/wynmew/workspace/PyTorchCVVD', 'Results_evalFPNSSD5125Classes_Aug4_BOX_HaiRongTest')):
-    ids.append((line.strip()))
-'''
-'''
-for line in open(osp.join('/home/wynmew/workspace/PyTorchCVVD', 'Results_evalFPNSSD5125Classes_Aug5_BOX_HaiRongTest')):
-    ids.append((line.strip()))
-'''
-'''
-for line in open(osp.join('/home/wynmew/workspace/PyTorchCVVD', 'Results_evalFPNSSD5125Classes_Aug6_BOX_HaiRongTest')):
-    ids.append((line.strip()))
-'''
-'''
-for line in open(osp.join('/home/wynmew/workspace/PyTorchCV', 'Results_evalFPNSSD5125Classes_Neg_HaiRongTest')):
-    ids.append((line.strip()))
-'''
-for line in open(osp.join('/home/wynmew/workspace/PyTorchCV', 'Results_evalFPNSSD5125Classes_Neg_Aug_HaiRongTest')):
+
+for line in open(osp.join('/home/wynmew/workspace/PyTorchCV', 'Results')):
     ids.append((line.strip()))
 
 for index in range(len(ids)):
