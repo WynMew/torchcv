@@ -14,7 +14,7 @@ class SSDLossNegWeights(nn.Module):
         self.num_classes = num_classes
         self.neg_ind = neg_ind
         weights = [1.]* num_classes
-        weights[neg_ind] = weights[neg_ind] / 2.6 # Wyn Mew
+        weights[neg_ind] = weights[neg_ind] / 2
         self.classes_weights = torch.FloatTensor(weights).cuda()
 
     def _hard_negative_mining(self, cls_loss, pos):
